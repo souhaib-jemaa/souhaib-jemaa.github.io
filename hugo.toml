@@ -1,9 +1,41 @@
 baseURL = "https://souhaib-jemaa.github.io/"
-languageCode = "en-us"
+locale = "en-us"
 title = "My CTF Writeups"
 theme = "PaperMod"
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]   # needed for search
+
 [params]
-  defaultTheme = "auto"
+  defaultTheme = "dark"            # "light", "dark" or "auto"
   ShowReadingTime = true
   ShowCodeCopyButton = true
+  ShowToc = true                   # table of contents in posts
+  TocOpen = false
+  ShowPostNavLinks = true          # previous/next post links
+
+  [params.homeInfoParams]          # intro text on the home page
+    Title = "CTF writeups"
+    Content = "Solutions and notes from the CTFs I play."
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/souhaib-jemaa"
+
+[menu]
+  [[menu.main]]
+    name = "Posts"
+    url = "/posts/"
+    weight = 1
+  [[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 2
+  [[menu.main]]
+    name = "Search"
+    url = "/search/"
+    weight = 3
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 4
