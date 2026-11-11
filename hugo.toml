@@ -1,0 +1,9 @@
+baseURL = "https://souhaib-jemaa.github.io/"
+languageCode = "en-us"
+title = "My CTF Writeups"
+theme = "PaperMod"
+
+[params]
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowCodeCopyButton = true
