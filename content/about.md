@@ -1,7 +1,6 @@
 ---
 title: "About"
 draft: false
-ShowToc: false
 ---
 
 Hi, I'm Souhaib. I'm a software engineering student who plays CTFs, mostly **reverse engineering** and **forensics**.
@@ -17,3 +16,4 @@ This blog is where I write up the challenges I solve: how I approached them, whi
 ## Find me
 
 - GitHub: [souhaib-jemaa](https://github.com/souhaib-jemaa)
+- Instagram: [sohay_b445](https://www.instagram.com/sohay_b445/)

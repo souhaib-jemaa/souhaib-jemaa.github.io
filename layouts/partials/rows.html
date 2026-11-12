@@ -1,0 +1,5 @@
+<ul class="tree">
+{{ range . }}
+  <li><a href="{{ .RelPermalink }}"><span class="d">[{{ .Date.Format "2006-01-02" }}]</span> {{ .Title }}</a></li>
+{{ end }}
+</ul>

@@ -1,0 +1,11 @@
+{{ define "main" }}
+<article class="panel">
+  {{ partial "ptitle.html" (cond (eq .Section "posts") (.Date.Format "2006-01-02") .Title) }}
+  <div class="pbody article">
+    <h1>{{ .Title }}</h1>
+    {{ if eq .Section "posts" }}{{ with .Params.tags }}<div class="meta">tags: {{ delimit . ", " }}</div>{{ end }}{{ end }}
+    {{ .Content }}
+  </div>
+  {{ partial "pend.html" . }}
+</article>
+{{ end }}

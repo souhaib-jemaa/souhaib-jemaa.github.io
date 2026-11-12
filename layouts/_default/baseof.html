@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+  <link rel="stylesheet" href="{{ "css/ascii.css" | relURL }}">
+</head>
+<body>
+<div class="wrap">
+  <header class="panel head">
+    {{ if fileExists "static/banner.txt" }}<pre class="banner">{{ readFile "static/banner.txt" }}</pre>{{ end }}
+    <div class="prompt">{{ site.Params.author }}@ctf:~$ ls writeups/</div>
+    <nav class="tabs">
+      {{ range site.Menus.main }}
+        <a class="{{ if eq $.RelPermalink .URL }}on{{ end }}" href="{{ .URL }}">[ {{ .Name }} ]</a>
+      {{ end }}
+    </nav>
+  </header>
+  <div class="layout">
+    <aside>
+      <section class="panel">
+        {{ partial "ptitle.html" "profile" }}
+        <div class="pbody profile">
+          <img class="avatar" src="https://github.com/{{ site.Params.github }}.png" alt="">
+          <h2>{{ site.Params.author }}</h2>
+          <p class="tag">{{ site.Params.tagline }}</p>
+          <div class="links">
+            <a href="https://github.com/{{ site.Params.github }}">[ github ]</a>
+            <a href="https://www.instagram.com/{{ site.Params.instagram }}/">[ instagram ]</a>
+          </div>
+        </div>
+        {{ partial "pend.html" . }}
+      </section>
+    </aside>
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
+  </div>
+</div>
+</body>
+</html>
