@@ -7,7 +7,7 @@ html { background: var(--bg); overflow-x: hidden; }
 body {
   margin: 0; min-height: 100vh; color: var(--fg);
   font: 15px/1.6 "Courier New", Courier, "DejaVu Sans Mono", monospace;
-  background: var(--bg) url("/img/bg.png") right center / cover no-repeat fixed;
+  background: var(--bg) url("/img/bg.jpg") right center / cover no-repeat fixed;
   cursor: url("/img/cursor.svg") 3 2, auto;
 }
 ::selection { background: var(--fg); color: var(--bg); }
