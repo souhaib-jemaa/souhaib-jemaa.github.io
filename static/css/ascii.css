@@ -1,5 +1,5 @@
 :root {
-  --bg: #04100a; --fg: #8fe39a; --bright: #c8ffcf; --dim: #3f7a4b; --line: #2a6b3a;
+  --bg: #04100a; --fg: #f2f2f2; --bright: #ffffff; --dim: #aab4ae; --accent: #8fe39a; --line: #2a6b3a;
   --panel: rgba(3, 16, 8, .70);
 }
 * { box-sizing: border-box; }
@@ -82,3 +82,10 @@ a:hover { background: var(--fg); color: var(--bg); }
   .wrap { max-width: none; margin: 0 auto; padding: 12px; }
   .layout { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* white text, green accents */
+.ptitle, .pend { color: var(--accent); }
+.article h1::before, .article h2::before, .article h3::before { color: var(--accent); }
+.tree li::before { color: var(--accent); }
+.prompt::after { color: var(--accent); }
+.article a { color: var(--accent); }

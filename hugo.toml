@@ -6,7 +6,6 @@ title = "CTF Writeups"
   author = "souhaib-jemaa"
   tagline = "reverse engineering & forensics"
   github = "souhaib-jemaa"
-  instagram = "sohay_b445"
 
 [markup.highlight]
   codeFences = false
