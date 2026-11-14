@@ -122,3 +122,68 @@ Reading the six hardcoded bytes and converting them from ASCII gives us the seri
 The valid serial is **`189715`**.
 
 Note: because the program prints how many characters are valid, the serial could also be brute-forced one position at a time without reading the disassembly.
+
+## 3. ENCRYPT
+
+### Challenge
+
+For the last mini-challenge, the program asks us to enter a password.
+
+![The password prompt](/img/posts/ret2-deusx64/6.png)
+
+### Approach
+
+We start with the source code of the function that runs when we choose ENCRYPT, `start_encryption_test()`:
+
+![Source code of start_encryption_test](/img/posts/ret2-deusx64/7.png)
+
+It reads our password with `fgets` and passes it to `encryption_check(password)`. The password is accepted only if the function returns **14** valid bytes. Otherwise it is rejected and the program shows how many bytes were valid.
+
+We don't have the source code of `encryption_check`, so we look at its disassembly:
+
+![Disassembly of encryption_check](/img/posts/ret2-deusx64/8.png)
+
+Here is what the loop does:
+
+1. The loop runs while `i <= 0xd`, so for `i` from 0 to 13, which is **14 characters**.
+2. For each character, it loads `input[i]` and **XORs it with the key `0x17`**.
+3. It then compares the result with the byte at the same position in `g_encrypted_text`, which holds the string ``gW""`'esHav{~s``.
+4. If both are equal, `valid_encrypted_char` is called and the `valid` counter is incremented. Otherwise, `invalid_encrypted_char` is called.
+
+So the check is `input[i] ^ 0x17 == encrypted[i]`. XOR is its own inverse, so the password we need is `encrypted[i] ^ 0x17`.
+
+### Solution
+
+We XOR each character of ``gW""`'esHav{~s`` with `0x17`:
+
+| i | Encrypted | Byte | Byte ^ `0x17` | Password |
+|---|---|---|---|---|
+| 0 | `g` | `0x67` | `0x70` | `p` |
+| 1 | `W` | `0x57` | `0x40` | `@` |
+| 2 | `"` | `0x22` | `0x35` | `5` |
+| 3 | `"` | `0x22` | `0x35` | `5` |
+| 4 | `` ` `` | `0x60` | `0x77` | `w` |
+| 5 | `'` | `0x27` | `0x30` | `0` |
+| 6 | `e` | `0x65` | `0x72` | `r` |
+| 7 | `s` | `0x73` | `0x64` | `d` |
+| 8 | `H` | `0x48` | `0x5f` | `_` |
+| 9 | `a` | `0x61` | `0x76` | `v` |
+| 10 | `v` | `0x76` | `0x61` | `a` |
+| 11 | `{` | `0x7b` | `0x6c` | `l` |
+| 12 | `~` | `0x7e` | `0x69` | `i` |
+| 13 | `s` | `0x73` | `0x64` | `d` |
+
+The required password is **`p@55w0rd_valid`**.
+
+The same computation in Python:
+
+```python
+enc = 'gW""`\'esHav{~s'
+print("".join(chr(ord(c) ^ 0x17) for c in enc))
+```
+
+Output:
+
+```
+p@55w0rd_valid
+```
