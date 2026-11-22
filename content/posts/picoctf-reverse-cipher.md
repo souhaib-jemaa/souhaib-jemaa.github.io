@@ -78,9 +78,3 @@ academy{r3v3rs397436647}
 
 **Flag:** `academy{r3v3rs397436647}`
 
-## Takeaways
-
-- Ghidra's decompiler makes this kind of logic easy to read: a parity check like `(j & 1) == 0` tells you right away that even and odd positions are treated differently.
-- A readable prefix is a quick hint that part of the data is not encoded.
-- To reverse a per-character cipher, apply the inverse operation at each index.
-- My first solver stopped one character early and dropped the closing `}`. Always check that the output matches the expected flag format.
