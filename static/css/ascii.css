@@ -90,3 +90,7 @@ a:hover { background: var(--fg); color: var(--bg); }
 /* no tree markers in the archive list */
 .tree li::before,
 .tree li:last-child::before { content: none !important; }
+
+/* hover: keep text readable */
+a:hover { background: var(--fg); }
+a:hover, a:hover * { color: var(--bg) !important; }
