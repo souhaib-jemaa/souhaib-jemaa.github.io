@@ -196,3 +196,17 @@ for i in range(32):
 
 print("".join(flag))
 ```
+
+## Defusing the bomb
+
+I ran the solver and, after a short moment, it printed a 32-character key:
+
+![The solver running and printing the key](/img/posts/tekup_elim_operation/8.png)
+
+Then I typed that key in the program. The timer stopped, the window turned green, and this time the blank in the flag message was filled with the real key instead of my joke message:
+
+![The program accepting the key and printing the flag](/img/posts/tekup_elim_operation/9.png)
+
+The bomb was defused with 1:22 left on the clock.
+
+**Flag:** `Securinets{IUXJIKSAGLUBXKQVSGLMIQNEEQXSVBYQ}`
