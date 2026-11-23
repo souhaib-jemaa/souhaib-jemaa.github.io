@@ -86,3 +86,7 @@ a:hover { background: var(--fg); color: var(--bg); }
 .article h1::before, .article h2::before, .article h3::before { color: var(--accent); }
 .prompt::after { color: var(--accent); }
 .article a { color: var(--accent); }
+
+/* no tree markers in the archive list */
+.tree li::before,
+.tree li:last-child::before { content: none !important; }
